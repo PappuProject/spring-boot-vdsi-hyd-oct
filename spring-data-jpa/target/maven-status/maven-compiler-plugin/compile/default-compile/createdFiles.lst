@@ -1,0 +1,5 @@
+com\demo\spring\service\HrService.class
+com\demo\spring\repo\EmpRepository.class
+com\demo\spring\UseDaoMain.class
+com\demo\spring\entity\Emp.class
+com\demo\spring\DaoConfig.class

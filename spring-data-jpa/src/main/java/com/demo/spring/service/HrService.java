@@ -37,6 +37,7 @@ public class HrService {
 	}
 	
 	public void listWithSalaryRange(double s1, double s2) {
+		System.out.println(repo.getClass().getName());
 		repo.getEmpWithSalBetweenRange(s1, s2)
 		.stream()
 		.forEach(e -> System.out.println(e.getEmpId() + " " + e.getName() + " " + e.getSalary()));
