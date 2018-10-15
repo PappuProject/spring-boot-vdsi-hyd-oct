@@ -2,10 +2,11 @@ package com.demo.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,29 +17,25 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableEurekaClient
+public class EmpDataServiceApplication extends SpringBootServletInitializer {
 
-public class EmpDataServiceApplication {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(EmpDataServiceApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(EmpDataServiceApplication.class, args);
 	}
 
 	public ApiInfo apiInfo() {
-		return new ApiInfoBuilder()
-				.description("Rest Doc for Emp Service Application")
-				.license("Open License")
-				.title("API Doc For Emp Service")
-				.build();
+		return new ApiInfoBuilder().description("Rest Doc for Emp Service Application").license("Open License")
+				.title("API Doc For Emp Service").build();
 	}
 
 	@Bean
 	public Docket docket() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.paths(PathSelectors.any())
-				.apis(RequestHandlerSelectors.basePackage("com.demo.spring"))
-				.build()
-				.apiInfo(apiInfo());
+		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any())
+				.apis(RequestHandlerSelectors.basePackage("com.demo.spring")).build().apiInfo(apiInfo());
 	}
 }

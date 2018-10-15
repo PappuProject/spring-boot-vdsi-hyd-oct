@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.demo</groupId>
-	<artifactId>emp-data-service</artifactId>
+	<artifactId>emp-data-service-tc</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
-	<name>emp-data-service</name>
+	<name>emp-data-service-tc</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -33,6 +33,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
 		<dependency>
@@ -61,18 +66,6 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>
-				spring-cloud-starter-netflix-eureka-client
-			</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>
-				spring-cloud-starter-netflix-hystrix
-			</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -85,15 +78,4 @@
 	</build>
 
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Finchley.SR1</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 </project>
